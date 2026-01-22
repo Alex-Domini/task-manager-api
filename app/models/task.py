@@ -1,9 +1,7 @@
 from sqlalchemy import String, ForeignKey
-
-from app.db.base import Base
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-#from app.models.user import User
+from app.db.base import Base
 
 
 class Task(Base):
@@ -13,6 +11,6 @@ class Task(Base):
     title: Mapped[str] = mapped_column(String(255), nullable=False)
     is_completed: Mapped[bool] = mapped_column(default=False)
 
-    user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
+    user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"))
 
-    user: Mapped["User"] = relationship(back_populates="tasks")
+    user: Mapped["User"] = relationship("User", back_populates="tasks")
