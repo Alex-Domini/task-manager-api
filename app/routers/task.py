@@ -24,3 +24,13 @@ def create_task(task_in: TaskCreate, db: Session = Depends(get_db)):
 @router.get("/", response_model=List[TaskRead])
 def get_tasks(db: Session = Depends(get_db)):
     return db.query(Task).filter().all()
+
+
+@router.delete("/{id}", response_model=TaskRead)
+def del_task(task_id: int, db: Session = Depends(get_db)):
+    db_task = db.query(Task).filter(Task.id==task_id).first()
+    if not db_task:
+        return None
+    db.delete(db_task)
+    db.commit()
+    return db_task
