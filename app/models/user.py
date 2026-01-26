@@ -9,5 +9,5 @@ class User(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
-
+    hashed_password: Mapped[str] = mapped_column()
     tasks: Mapped[list["Task"]] = relationship("Task",back_populates="user",cascade="all, delete-orphan")
