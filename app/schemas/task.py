@@ -11,3 +11,8 @@ class TaskRead(BaseModel):
 
     class Config:
         from_attributes = True
+
+
+class TaskUpdate(BaseModel):
+    title: str | None = None
+    is_completed: bool | None = None
