@@ -3,10 +3,12 @@
 Learning project with FastAPI, SQLAlchemy and Alembic.
 
 ## Features
-- Basic CRUD (no auth)
+- User registration
+- JWT authentication
+- Task CRUD with ownership
 
 ## Tech stack
 - FastAPI
-- SQLAlchemy
+- SQLAlchemy (sync)
 - Alembic
 - SQLite

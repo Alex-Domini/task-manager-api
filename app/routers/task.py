@@ -13,8 +13,8 @@ router = APIRouter(prefix="/tasks", tags=["tasks"])
 
 @router.post("/", response_model=TaskRead)
 def create_task(task_in: TaskCreate,
-                current_user: User = Depends(get_current_user),
-                db: Session = Depends(get_db), ):
+                db: Session = Depends(get_db),
+                current_user: User = Depends(get_current_user),):
     task = Task(title=task_in.title,
                 user_id=current_user.id, )
     db.add(task)
