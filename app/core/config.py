@@ -2,7 +2,15 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-DATABASE_URL = f"sqlite:///{BASE_DIR}/task_manager.db"
+
+"""
+Важно:
+
+SYNC_DATABASE_URL — для Alembic (потом можно использовать, если понадобиться из кода)
+ASYNC_DATABASE_URL — для приложения (FastAPI)
+"""
+SYNC_DATABASE_URL = f"sqlite:///{BASE_DIR}/task_manager.db"
+ASYNC_DATABASE_URL = f"sqlite+aiosqlite:///{BASE_DIR}/task_manager.db"
 
 
 

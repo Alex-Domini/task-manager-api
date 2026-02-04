@@ -1,6 +1,4 @@
-from sqlalchemy import create_engine
+from sqlalchemy.ext.asyncio import create_async_engine
+from app.core.config import ASYNC_DATABASE_URL
 
-from app.core.config import DATABASE_URL
-
-engine = create_engine(DATABASE_URL, echo=False)
-
+engine = create_async_engine(ASYNC_DATABASE_URL, echo=False)
